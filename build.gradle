@@ -1,0 +1,47 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'io.github.jspinak.brobot'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation('com.sikulix:sikulixapi:2.0.5') {
+		exclude group: 'org.slf4j', module: 'slf4j-nop'
+	}
+	implementation group: 'org.bytedeco', name: 'javacv-platform', version: '1.5.10'
+
+	/*
+		Add the Brobot JAR here after creating a JAR of the library module.
+	    You also may need to add the library to your project path in the IDE.
+	 */
+	implementation files('../brobot/library/build/libs/brobot-1.0.7.jar') // the relative path to the JAR
+	//implementation files("C:\\Users\\jspin\\Documents\\brobot_parent\\brobot\\library\\build\\libs") // sometimes the absolute path works better
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
