@@ -12,7 +12,6 @@ public class MyAppApplication {
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(MyAppApplication.class);
 		builder.headless(false);
 		ConfigurableApplicationContext context = builder.run(args);
-		SpringApplication.run(MyAppApplication.class, args);
 
 		AutomationInstructions automationInstructions = context.getBean(AutomationInstructions.class);
 		automationInstructions.doAutomation();
