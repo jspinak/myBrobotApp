@@ -38,8 +38,7 @@ dependencies {
 		Add the Brobot JAR here after creating a JAR of the library module.
 	    You also may need to add the library to your project path in the IDE.
 	 */
-	implementation files('../brobot/library/build/libs/brobot-1.0.7.jar') // the relative path to the JAR
-	//implementation files("C:\\Users\\jspin\\Documents\\brobot_parent\\brobot\\library\\build\\libs") // sometimes the absolute path works better
+	implementation files('../brobot/library/build/libs/library-1.0.7.jar') // the relative path to the JAR
 }
 
 tasks.named('test') {
